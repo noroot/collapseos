@@ -32,6 +32,49 @@ tools.
 
 Each folder has a README with more details.
 
+## First run
+
+Everything to run is already inside repo, only you have todo is get submodules and compile
+
+
+* `git clone`
+* `git submodule init && git submodule update`
+* `cd tools/emul && make`
+* `./shell/shell`
+
+After that, you have to see prompt like this:
+
+```
+Initializing filesystem
+Collapse OS
+>
+```
+
+You can execute commands and compile with `zasm` inside this shell: 
+
+```
+> fls
+hello.asm
+ed
+zasm
+readme.txt
+user.h
+> fnew 1 dest
+> fopn 0 hello.asm
+> fopn 1 dest
+> zasm 1 2
+First pass
+user.h
+Second pass
+user.h
+> dest
+Assembled from the shell
+```
+
+Shell commands defined here `kernel/shell.asm` here `kernel/fs_cmds.asm` and here `kernel/blockdev_cmds.asm`
+
+Don't be lazy, take a look at [doc/emulate.md](doc/emulate.md) and whole [doc/](doc) section.
+
 ## Status
 
 The project unfinished but is progressing well! See [Collapse OS' website][web]
